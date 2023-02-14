@@ -1,0 +1,11 @@
+
+Criar arquivo de migrate genérico para inclusão de colunas
+npx sequelize-cli migration:generate --name addRgColumn
+
+
+Criar as tabelas no banco:
+npx sequelize-cli db:migrate
+
+
+Desfaz a última alteração no banco
+npx sequelize-cli db:migrate:undo
