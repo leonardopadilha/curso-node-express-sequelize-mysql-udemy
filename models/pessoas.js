@@ -12,11 +12,21 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Pessoa.hasOne(models.Endereco, { // É dona de... pois está emprestando seu id
         foreignKey: 'pessoaId'
-      })
+      });
 
       Pessoa.hasMany(models.Telefone, {
         foreignKey: 'pessoaId'
-      })
+      });
+
+      Pessoa.belongsToMany(Pessoa, {
+        through: 'pessoa_seguidores',
+        foreignKey: 'pessoaId', as: 'seguindo'
+      });
+
+      Pessoa.belongsToMany(Pessoa, {
+        through: 'pessoa_seguidores',
+        foreignKey: 'seguePessoaId', as: 'seguidores'
+      });
     }
   }
   Pessoa.init({
