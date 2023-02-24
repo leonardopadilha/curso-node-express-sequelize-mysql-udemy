@@ -70,7 +70,21 @@ app.get("/carros", (req, res) => {
 
     const carro = carros.find(car => car.nome === req.query.nome)
     res.send(carro)
+});
+
+const musicas = [];
+
+// http://localhost:3000/musicas
+app.post("/musicas", (req, res) => {
+    const musica = req.body;
+    musicas.push(musica);
+
+    res.send(req.body.nome);
 })
+
+app.get("/musicas", (req, res) => {
+    res.send(musicas)
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
