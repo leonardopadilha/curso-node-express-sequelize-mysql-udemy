@@ -7,8 +7,10 @@ const port = 3000
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
-http://localhost:3000/usuarios
-app.get('/usuarios', (req, res) => {
+const usuarios = [];
+
+http://localhost:3000/usuarioSalvo
+app.get('/usuarioSalvo', (req, res) => {
   res.send([
     {
         nome: 'joao'
@@ -85,6 +87,39 @@ app.post("/musicas", (req, res) => {
 app.get("/musicas", (req, res) => {
     res.send(musicas)
 });
+
+app.post("/usuarios", (req, res) => {
+    const usuario = req.body;
+    usuarios.push(usuario);
+
+    res.send(req.body)
+})
+
+//http://localhost:3000/usuarios/1
+app.put("/usuarios/:id", (req, res) => {
+    const index = usuarios.findIndex(user => user.id === ~~req.params.id);
+    const usuario = req.body;
+    usuarios.splice(index, 1, usuario);
+    res.send(usuario)
+});
+
+// http://localhost:3000/usuarios
+app.get("/usuarios", (req, res) => {
+    res.send(usuarios)
+});
+
+// http://localhost:3000/usuarios/2
+app.get("/usuarios/:id", (req, res) => {
+    const index = usuarios.findIndex(user => user.id === ~~req.params.id)
+    res.send(usuarios[index])
+});
+
+app.delete("/usuarios/:id", (req, res) => {
+    const usuario = usuarios.findIndex(user => user.id === ~~req.params.id);
+    usuarios.splice(usuario, 1);
+    res.send({mensagem: "Usuário deletado com sucesso!"});
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
