@@ -1,0 +1,5 @@
+npm i express body-parser sequelize mysql2
+npm i --save-dev sequelize-cli
+npm i dotenv 
+
+npx sequelize-cli model:generate --name Usuario --attributes nome:string,email:string,senha:string
