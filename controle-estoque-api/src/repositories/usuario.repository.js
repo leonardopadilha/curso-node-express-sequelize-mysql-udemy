@@ -6,6 +6,18 @@ const create = async function(usuario) {
     return usuarioCriado;
 };
 
+const findUsers = async function() {
+    const usuarios = await Usuario.findAll();
+    return usuarios;
+};
+
+const findUserById = async function(idUser) {
+    const usuarioId = await Usuario.findByPk(idUser);
+    return usuarioId;
+}
+
 module.exports = {
     create: create,
+    findUsers: findUsers,
+    findUserById: findUserById
 }
