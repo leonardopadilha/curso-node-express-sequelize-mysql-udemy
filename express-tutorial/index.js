@@ -120,7 +120,7 @@ app.delete("/usuarios/:id", (req, res) => {
     res.send({mensagem: "Usuário deletado com sucesso!"});
 });
 
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
