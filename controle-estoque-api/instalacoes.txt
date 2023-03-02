@@ -1,5 +1,6 @@
 npm i express body-parser sequelize mysql2
 npm i --save-dev sequelize-cli
 npm i dotenv 
+npm install bcrypt
 
 npx sequelize-cli model:generate --name Usuario --attributes nome:string,email:string,senha:string
