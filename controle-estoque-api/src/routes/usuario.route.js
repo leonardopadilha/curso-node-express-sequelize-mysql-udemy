@@ -5,6 +5,7 @@ const usuarioValidator = require('../validators/usuario.validator');
 
 router
     .post('/', usuarioValidator.create(), usuarioController.create)
+    .put('/:id', usuarioValidator.updateUser(), usuarioController.updateUser)
     .get('/', usuarioController.findUsers)
     .get('/:id', usuarioValidator.findUserById(), usuarioController.findUserById)
 

@@ -7,7 +7,14 @@ const create = function() {
         body('email', validatorMessage('Email')).exists().bail().isString(),
         body('senha', validatorMessage('Senha')).exists().bail().isString()
     ]
-}
+};
+
+const updateUser = function() {
+    return [
+        body('nome', validatorMessage('Nome')).exists().bail().isString(),
+        param('id', validatorMessage('Id')).exists().bail().isInt()
+    ]
+};
 
 const findUserById = function() {
     return [
@@ -17,5 +24,6 @@ const findUserById = function() {
 
 module.exports = {
     create: create,
+    updateUser: updateUser,
     findUserById: findUserById
 }

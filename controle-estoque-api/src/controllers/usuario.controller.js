@@ -20,12 +20,34 @@ const create = async function(req, res, next) {
     }
 }
 
+const updateUser = async function(req, res, next) {
+    try {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            throw createError(422, { errors: errors.array() })
+        }
+
+        const response = await usuarioService.updateUser({
+            nome: req.body.nome
+        }, req.params.id);
+
+        if (response && response.message) {
+            throw response;
+        }
+
+        res.send(response);
+    } catch (error) {
+        return next(error); 
+    }
+}
+
 const findUsers = async function(req, res, next) {
     try {
         const usuarios = await usuarioService.findUsers();
         res.send(usuarios);
     } catch (error) {
-        next(error);
+       return next(error);
     }
 };
 
@@ -50,6 +72,7 @@ const findUserById = async function(req, res, next) {
 }
 module.exports = {
     create: create,
+    updateUser: updateUser,
     findUsers: findUsers,
     findUserById: findUserById
 }
