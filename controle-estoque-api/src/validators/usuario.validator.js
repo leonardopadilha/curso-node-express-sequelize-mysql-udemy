@@ -28,9 +28,17 @@ const deleteUser = function() {
     ]
 }
 
+const login = function() {
+    return [
+        body('email', validatorMessage('Email')).exists().bail().isString(),
+        body('senha', validatorMessage('Senha')).exists().bail().isString(),
+    ]
+}
+
 module.exports = {
     create: create,
     updateUser: updateUser,
     deleteUser: deleteUser,
-    findUserById: findUserById
+    findUserById: findUserById,
+    login: login
 }

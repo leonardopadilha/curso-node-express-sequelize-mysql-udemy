@@ -4,5 +4,6 @@ npm i dotenv
 npm install bcrypt
 npm i http-errors
 npm i express-validator
+npm install jsonwebtoken
 
 npx sequelize-cli model:generate --name Usuario --attributes nome:string,email:string,senha:string

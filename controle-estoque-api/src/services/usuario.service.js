@@ -2,6 +2,35 @@ const usuarioRepository = require('../repositories/usuario.repository');
 const createError = require('http-errors');
 require('dotenv').config();
 const bcrypt = require('bcrypt');
+const { sign } = require('jsonwebtoken');
+
+const login = async function(usuario) {
+    const usuarioLogin = await usuarioRepository.findUserByWhere({email : usuario.email});
+
+    if (!usuarioLogin) {
+        return createError(401, 'Usuário inválido');
+    };
+
+    const comparacaoSenha = await bcrypt.compare(usuario.senha, usuarioLogin.senha);
+
+    if (!comparacaoSenha) {
+        return createError(401, 'Usuário inválido');
+    };
+
+    const token = sign({
+        id: usuarioLogin.id
+    }, process.env.SECRET, {
+        //expiresIn: 
+    });
+
+    delete usuarioLogin.senha;
+
+    return {
+        auth: true,
+        usuario: usuarioLogin,
+        token: token
+    }
+}
 
 const create = async function(usuario) {
     const existeUsuario = await usuarioRepository.findUserByWhere({email : usuario.email});
@@ -51,6 +80,7 @@ const findUserById = async function(idUser) {
 };
 
 module.exports = {
+    login: login,
     create: create,
     updateUser:updateUser,
     deleteUser: deleteUser,
