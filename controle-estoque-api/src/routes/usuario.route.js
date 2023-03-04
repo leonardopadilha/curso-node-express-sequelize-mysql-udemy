@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const usuarioController = require('../controllers/usuario.controller');
+const usuarioValidator = require('../validators/usuario.validator');
 
 router
-    .post('/', usuarioController.create)
+    .post('/', usuarioValidator.create(), usuarioController.create)
     .get('/', usuarioController.findUsers)
-    .get('/:id', usuarioController.findUserById)
+    .get('/:id', usuarioValidator.findUserById(), usuarioController.findUserById)
 
 module.exports = router;

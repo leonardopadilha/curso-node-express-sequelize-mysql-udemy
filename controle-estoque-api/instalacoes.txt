@@ -3,5 +3,6 @@ npm i --save-dev sequelize-cli
 npm i dotenv 
 npm install bcrypt
 npm i http-errors
+npm i express-validator
 
 npx sequelize-cli model:generate --name Usuario --attributes nome:string,email:string,senha:string
