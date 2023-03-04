@@ -10,6 +10,14 @@ const updateUser = async function(usuario, id) {
     await Usuario.update(usuario, {
         where: { id: id }
     })
+};
+
+const deleteUser = async function(id) {
+    return Usuario.destroy({
+        where : {
+            id: id
+        }
+    })
 }
 
 const findUsers = async function() {
@@ -32,6 +40,7 @@ const findUserByWhere = async function(where) {
 module.exports = {
     create: create,
     updateUser: updateUser,
+    deleteUser: deleteUser,
     findUsers: findUsers,
     findUserById: findUserById,
     findUserByWhere: findUserByWhere,
