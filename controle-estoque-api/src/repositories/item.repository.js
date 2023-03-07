@@ -36,7 +36,7 @@ const deletar = async function(id) {
             id: id
         }
     })
-}
+};
 
 module.exports = {
     criar: criar,
