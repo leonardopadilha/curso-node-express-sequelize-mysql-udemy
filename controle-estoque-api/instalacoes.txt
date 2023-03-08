@@ -5,6 +5,7 @@ npm install bcrypt
 npm i http-errors
 npm i express-validator
 npm install jsonwebtoken
+npm i exceljs
 
 npx sequelize-cli model:generate --name Usuario --attributes nome:string,email:string,senha:string
 npx sequelize-cli model:generate --name Item --attributes nome:string,quantidade:integer

@@ -12,6 +12,7 @@ const itemRoute = require('./src/routes/item.route');
 const entradaRoute = require('./src/routes/entrada.route');
 const saidaRoute = require('./src/routes/saida.route');
 const usuarioRoute = require('./src/routes/usuario.route');
+const itemReportRoute = require('./src/routes/item-report.route');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -20,6 +21,7 @@ app.use('/api/usuarios', usuarioRoute)
 app.use('/api/itens', itemRoute);
 app.use('/api/entradas', entradaRoute);
 app.use('/api/saidas', saidaRoute);
+app.use('/api/item-reports', itemReportRoute);
 
 app.use(handle404Error);
 app.use(handleError)
