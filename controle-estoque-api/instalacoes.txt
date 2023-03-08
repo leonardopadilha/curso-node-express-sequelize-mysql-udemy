@@ -11,3 +11,4 @@ npx sequelize-cli model:generate --name Usuario --attributes nome:string,email:s
 npx sequelize-cli model:generate --name Item --attributes nome:string,quantidade:integer
 npx sequelize-cli model:generate --name Entrada --attributes quantidade:integer
 npx sequelize-cli model:generate --name Saida --attributes quantidade:integer
+npx sequelize-cli model:generate --name Fornecedor --attributes nome:string,telefone:string,email:string
