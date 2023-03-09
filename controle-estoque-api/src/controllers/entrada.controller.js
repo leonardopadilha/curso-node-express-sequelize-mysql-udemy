@@ -13,7 +13,8 @@ const criar = async function(req, res, next) {
             quantidade: req.body.quantidade,
             usuario_id: req.usuario_id,
             preco: req.body.preco,
-            item_id: req.body.item_id
+            item_id: req.body.item_id,
+            fornecedor_id: req.body.fornecedor_id,
         });
 
         if (response && response.message) {

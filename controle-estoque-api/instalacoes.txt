@@ -12,3 +12,6 @@ npx sequelize-cli model:generate --name Item --attributes nome:string,quantidade
 npx sequelize-cli model:generate --name Entrada --attributes quantidade:integer
 npx sequelize-cli model:generate --name Saida --attributes quantidade:integer
 npx sequelize-cli model:generate --name Fornecedor --attributes nome:string,telefone:string,email:string
+
+npx sequelize-cli migration:generate --name add-fornecedor-column
+npx sequelize-cli db:migrate
