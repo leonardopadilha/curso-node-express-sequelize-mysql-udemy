@@ -9,6 +9,7 @@ const criar = async function(req, res, next) {
         if (!errors.isEmpty()) {
             throw createError(422, { errors: errors.array() })
         }
+        
         const response = await entradaService.criar({
             quantidade: req.body.quantidade,
             usuario_id: req.usuario_id,
